@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row{
+    padding: 5px 5px 5px 5px
+
+
+}
+.button_wrap{
+    padding: 5px 5px 5px 5px;
+}
+.innerLayer:{
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border:solid 1px blue;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<title>Title</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#">Brand</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+         <div class="panel panel-default">
+          <div class="panel-heading">什么是像素？</div>
+          <div class="panel-body">
+
+              像素是指由图像的小方格组成的，这些小方块都有一个明确的位置和被分配的色彩数值，小方格颜色和位置就决定该图像所呈现出来的样子。
+可以将像素视为整个图像中不可分割的单位或者是元素。不可分割的意思是它不能够再切割成更小单位抑或是元素，它是以一个单一颜色的小格存在。每一个点阵图像包含了一定量的像素，这些像素决定图像在屏幕上所呈现的大小。
+
+              <h3>像素风格画</h3>
+
+        <img WIDTH="50%" src="{{ url_for('static', filename="image/pixel.png") }}">
+          </div>
+        </div>
+
+
+
+
+    </div>
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">文件上传</div>
+          <div class="panel-body">
+            <div class="row">
+                <h1>上传图片</h1>
+                <form action="" enctype='multipart/form-data' method='POST'>
+                    <div class="form-group">
+                        <label for="exampleInputFile">选择文件</label>
+                        <input type="file" name="file" id="exampleInputFile">
+                        <p class="help-block">只限上传jpg文档，文件请用 英文命名，文件不超过1M.</p>
+                    </div>
+                    <input class="btn btn-default" type="submit" value="上传">
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="innerLayer">
+            <div class="panel panel-default">
+              <div class="panel-heading">下载默认文档</div>
+              <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/fanStar.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStar_b.xlsx") }}" download="fanStar_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStar_c.xlsx") }}" download="fanStar_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/van_2.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_b.xlsx") }}" download="van_2_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_c.xlsx") }}" download="van_2_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/Rembrandt.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_b.xlsx") }}" download="Rembrandt_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_c.xlsx") }}" download="Rembrandt_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                        </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">下载上传的文档</div>
+            <div class="panel-body">
+                {% if session['filename'] %}
+                    <div>
+                        <img class="img-thumbnail" src="{{ url_for('static', filename=session['filename'])+"."+session["extName"] }}">
+                    </div>
+                    <br>
+
+                    <div >
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_b.xlsx" }}" download="{{session['filename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：黑白Excel </a></div><br>
+                    <div >
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_c.xlsx" }}" download="{{session['filename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：彩色Excel </a></div><br>
+
+                     {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <div class="row info-info">
+        
+        <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
+        
+      </div>
+    </div>
+    <div class="col-xs-3"> </div>
+  </div>
+</div>
+</body>
+</html>
