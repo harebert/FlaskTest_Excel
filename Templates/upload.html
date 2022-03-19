@@ -126,32 +126,32 @@
               <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-4 text-center">
-                        <img src="{{ url_for('static', filename="image/homeworkS.JPG" )}}" alt="..." class="img-thumbnail">
+                        <img src="{{ url_for('static', filename="image/fanStar.JPG" )}}" alt="..." class="img-thumbnail">
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkS_b.xlsx") }}" download="homeworkS_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStar_b.xlsx") }}" download="fanStar_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
                         </div>
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkS_c.xlsx") }}" download="homeworkS_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStar_c.xlsx") }}" download="fanStar_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
                         </div>
                     </div>
                     <div class="col-xs-4 text-center">
-                        <img src="{{ url_for('static', filename="image/homeworkF.JPG" )}}" alt="..." class="img-thumbnail">
+                        <img src="{{ url_for('static', filename="image/van_2.JPG" )}}" alt="..." class="img-thumbnail">
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkF_b.xlsx") }}" download="homeworkF_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_b.xlsx") }}" download="van_2_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
                         </div>
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkF_c.xlsx") }}" download="homeworkF_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_c.xlsx") }}" download="van_2_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
                         </div>
 
 
                     </div>
                     <div class="col-xs-4 text-center">
-                        <img src="{{ url_for('static', filename="image/homeworkL.JPG" )}}" alt="..." class="img-thumbnail">
+                        <img src="{{ url_for('static', filename="image/Rembrandt.JPG" )}}" alt="..." class="img-thumbnail">
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkL_b.xlsx") }}" download="homeworkL_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_b.xlsx") }}" download="Rembrandt_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
                         </div>
                         <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkL_c.xlsx") }}" download="homeworkL_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_c.xlsx") }}" download="Rembrandt_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>
                         </div>
 
                     </div>
@@ -174,9 +174,9 @@
                     <br>
 
                     <div >
-                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_b.xlsx" }}" download="{{session['filename']}}_b.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：黑白Excel </a></div><br>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_b.xlsx" }}" download="{{session['filename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：黑白Excel </a></div><br>
                     <div >
-                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_c.xlsx" }}" download="{{session['filename']}}_c.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：彩色Excel </a></div><br>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_c.xlsx" }}" download="{{session['filename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：彩色Excel </a></div><br>
 
                      {% endif %}
             </div>
