@@ -153,8 +153,18 @@ def upload():
             print(outfile)
             im = Image.open(infile)
             (x, y) = im.size  # read image size
-            x_s = 200  # define standard width
-            y_s = 200  # y * x_s / x  # calc height based on standard width
+            #------------------保持原始比例---------------------------------
+            if x>y:
+                y_s=200
+                x_s=int(x/(y/200))
+            else:
+                x_s=200
+                y_s=int(y/(x/200))
+
+            #------------------宽高皆为200---------------------------------
+            #x_s = 200  # define standard width
+            #y_s = 200  # y * x_s / x  # calc height based on standard width
+            #-------------------------------------------------------------
             out = im.resize((x_s, y_s), Image.ANTIALIAS)  # resize image with high-quality
             out.save(outfile)
 
