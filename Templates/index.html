@@ -6,32 +6,31 @@
 	border: thin solid #336699;
 	border-radius: 5px 5px 5px 5px;
 }
-.row{
-    padding: 5px 5px 5px 5px
-
-
+.row {
+	padding: 5px 5px 5px 5px
 }
-.button_wrap{
-    padding: 5px 5px 5px 5px;
+.button_wrap {
+	padding: 5px 5px 5px 5px;
 }
-.innerLayer:{
-    padding: 5px 5px 5px 5px;
-    border-radius: 5px;
-    border:solid 1px blue;
+.innerLayer: {
+padding: 5px 5px 5px 5px;
+border-radius: 5px;
+border:solid 1px blue;
 }
 </style>
-<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
 
-<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script> 
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
 
 <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 <link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
 <script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
-
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
+<script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script>
 <title>上外附中 人工智能学习资源平台</title>
 </head>
 
@@ -86,167 +85,120 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-3">
-         <div class="panel panel-default">
-          <div class="panel-heading">什么是人工智能？</div>
-          <div class="panel-body">
-
-              人工智能（Artificial Intelligence），英文缩写为AI。它是研究、开发用于模拟、延伸和扩展人的智能的理论、方法、技术及应用系统的一门新的技术科学。人工智能是计算机科学的一个分支，它企图了解智能的实质，并生产出一种新的能以人类智能相似的方式做出反...
-
-{#              <h3>像素风格画</h3>#}
-{##}
-{#        <img WIDTH="50%" src="{{ url_for('static', filename="image/pixel.png") }}">#}
-          </div>
-        </div>
-
-
-
-
+      <div class="panel panel-default">
+        <div class="panel-heading">什么是人工智能？</div>
+        <div class="panel-body"> 人工智能（Artificial Intelligence），英文缩写为AI。它是研究、开发用于模拟、延伸和扩展人的智能的理论、方法、技术及应用系统的一门新的技术科学。人工智能是计算机科学的一个分支，它企图了解智能的实质，并生产出一种新的能以人类智能相似的方式做出反...
+          
+          {#
+          <h3>像素风格画</h3>
+          #}
+          {##}
+          {# <img WIDTH="50%" src="{{ url_for('static', filename="image/pixel.png") }}">#} </div>
+      </div>
     </div>
     <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">初中人工智能课程-站点目录</div>
-          <div class="panel-body">
+      <div class="panel panel-default">
+        <div class="panel-heading">初中人工智能课程-站点目录</div>
+        <div class="panel-body">
+          <div class="row"> {#
+            <div class="link-item"><a href="/uploadLBP" target="_blank">LBP运算</a></div>
+            #}
+            {#
+            <div class="link-item"><a href="/convolutionScaled" target="_blank">卷积与池化</a></div>
+            #}
+            {#
+            <div class="link-item"><a href="http://exam.sfls.cn/web/setosa.io/imagekernels.html" target="_blank">卷积及卷积核体验</a></div>
+            #}
+            {#
+            <div class="link-item"><a href="http://exam.sfls.cn/web/setosa.io/linearregression.html" target="_blank">线性回归体验</a></div>
+            #}
             <div class="row">
-{#                <div class="link-item"><a href="/uploadLBP" target="_blank">LBP运算</a></div>#}
-{#                <div class="link-item"><a href="/convolutionScaled" target="_blank">卷积与池化</a></div>#}
-{#                <div class="link-item"><a href="http://exam.sfls.cn/web/setosa.io/imagekernels.html" target="_blank">卷积及卷积核体验</a></div>#}
-{#                <div class="link-item"><a href="http://exam.sfls.cn/web/setosa.io/linearregression.html" target="_blank">线性回归体验</a></div>#}
-                 <div class="row">
-                    <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/LBP.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="/uploadLBP"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> LBP运算 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/CONVCAL.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="/convolutionScaled"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> 卷积与池化 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/CONVKERNEL.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="http://exam.sfls.cn/web/setosa.io/imagekernels.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 卷积及卷积核体验 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/LINEAR.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="http://exam.sfls.cn/web/setosa.io/linearregression.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 线性回归体验 </a>
-                        </div>
-                    </div>
-
-
-                </div>
-
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/LBP.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="/uploadLBP"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> LBP运算 </a> </div>
+              </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/CONVCAL.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="/convolutionScaled"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> 卷积与池化 </a> </div>
+              </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/CONVKERNEL.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://exam.sfls.cn/web/setosa.io/imagekernels.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 卷积及卷积核体验 </a> </div>
+              </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/LINEAR.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://exam.sfls.cn/web/setosa.io/linearregression.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 线性回归体验 </a> </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="innerLayer">
-            <div class="panel panel-default">
-              <div class="panel-heading">高中人工智能课程-站点目录</div>
-              <div class="panel-body">
-                <div class="row">
-{#                      <div class="link-item"><a href="http://exam.sfls.cn/web/HTMLformatter" target="_blank">HTML/JSON数据格式化</a></div>#}
-{#                      <div class="link-item"><a href="http://exam.sfls.cn/web/onlineColorPicker/onlineColorPicker.html" target="_blank">颜色拾取器</a></div>#}
-{#                    <div class="link-item"><a href="{{ url_for('static', filename="uploads/飞桨AI Studio_注册使用指南.pdf") }}" target="_blank">飞桨AI Studio_注册使用指南.pdf</a></div>#}
-{#                    <div class="link-item"><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank">清华大学开源软件镜像站</a></div>#}
-
-
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/JSON.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="http://exam.sfls.cn/web/HTMLformatter"  role="button" target="_blank"> <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span> HTML/JSON数据格式化 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/COLOR.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="http://exam.sfls.cn/web/onlineColorPicker/onlineColorPicker.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 颜色拾取器 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/PADDLE.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="{{ url_for('static', filename="uploads/飞桨AI Studio_注册使用指南.pdf") }}"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 飞桨注册使用指南 </a>
-                        </div>
-                    </div>
-                     <div class="col-xs-3 text-center">
-                        <img src="{{ url_for('static', filename="image/TUNA.png" )}}" alt="..." class="img-thumbnail">
-                        <div class="button_wrap">
-                            <a class="btn btn-default" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 清华大学开源软件镜像站 </a>
-                        </div>
-                    </div>
-{#                    <div class="col-xs-4 text-center">#}
-{#                        <img src="{{ url_for('static', filename="image/homeworkS.JPG" )}}" alt="..." class="img-thumbnail">#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkS_b.xlsx") }}" download="homeworkS_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>#}
-{#                        </div>#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkS_c.xlsx") }}" download="homeworkS_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="col-xs-4 text-center">#}
-{#                        <img src="{{ url_for('static', filename="image/homeworkF.JPG" )}}" alt="..." class="img-thumbnail">#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkF_b.xlsx") }}" download="homeworkF_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>#}
-{#                        </div>#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkF_c.xlsx") }}" download="homeworkF_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>#}
-{#                        </div>#}
-{##}
-{##}
-{#                    </div>#}
-{#                    <div class="col-xs-4 text-center">#}
-{#                        <img src="{{ url_for('static', filename="image/homeworkL.JPG" )}}" alt="..." class="img-thumbnail">#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkL_b.xlsx") }}" download="homeworkL_b.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>#}
-{#                        </div>#}
-{#                        <div class="button_wrap">#}
-{#                            <a class="btn btn-default" href="{{ url_for('static', filename="image/homeworkL_c.xlsx") }}" download="homeworkL_c.xlsx" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：彩色文件 </a>#}
-{#                        </div>#}
-{##}
-{#                    </div>#}
-
-                </div>
+      </div>
+      <div class="innerLayer">
+        <div class="panel panel-default">
+          <div class="panel-heading">高中人工智能课程-站点目录</div>
+          <div class="panel-body">
+            <div class="row"> {#
+              <div class="link-item"><a href="http://exam.sfls.cn/web/HTMLformatter" target="_blank">HTML/JSON数据格式化</a></div>
+              #}
+              {#
+              <div class="link-item"><a href="http://exam.sfls.cn/web/onlineColorPicker/onlineColorPicker.html" target="_blank">颜色拾取器</a></div>
+              #}
+              {#
+              <div class="link-item"><a href="{{ url_for('static', filename="uploads/飞桨AI Studio_注册使用指南.pdf") }}" target="_blank">飞桨AI Studio_注册使用指南.pdf</a></div>
+              #}
+              {#
+              <div class="link-item"><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank">清华大学开源软件镜像站</a></div>
+              #}
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/JSON.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://exam.sfls.cn/web/HTMLformatter"  role="button" target="_blank"> <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span> HTML/JSON数据格式化 </a> </div>
               </div>
-            </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/COLOR.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://exam.sfls.cn/web/onlineColorPicker/onlineColorPicker.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 颜色拾取器 </a> </div>
+              </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/PADDLE.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="{{ url_for('static', filename="uploads/飞桨AI Studio_注册使用指南.pdf") }}"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 飞桨注册使用指南 </a> </div>
+              </div>
+              <div class="col-xs-3 text-center"> <img src="{{ url_for('static', filename="image/TUNA.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 清华大学开源软件镜像站 </a> </div>
+              </div>
+              <!----> </div>
+          </div>
         </div>
-
-
+      </div>
+		
+		<div class="innerLayer">
+		<div class="row info-info">
+        <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
+      </div>
+		
+		</div>
     </div>
     <div class="col-xs-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">下载上传的文档</div>
-            <div class="panel-body">
-{#                {% if session['filename'] %}#}
-{#                    <div>#}
-{#                        <img class="img-thumbnail" src="{{ url_for('static', filename=session['filename'])+"."+session["extName"] }}">#}
-{#                    </div>#}
-{#                    <br>#}
-{##}
-{#                    <div >#}
-{#                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_b.xlsx" }}" download="{{session['filename']}}_b.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：黑白Excel </a></div><br>#}
-{#                    <div >#}
-{#                        <a class="btn btn-default" href="{{ url_for('static', filename=session['filename'])+"_c.xlsx" }}" download="{{session['filename']}}_c.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：彩色Excel </a></div><br>#}
-{##}
-{#                     {% endif %}#}
+      <div class="panel panel-default">
+        <div class="panel-heading">下载文档</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-2 text-center"></div>
+            <div class="col-xs-8 text-center"> <a href="{{ url_for('static', filename="pdf/page_01.png" )}}" data-lightbox="page_01" data-title="page_01"> <img src="{{ url_for('static', filename="pdf/page_01.png" )}}" alt="..." class="img-thumbnail"> </a>
+              <div class="button_wrap"> 封面 </div>
             </div>
+            <div class="col-xs-2 text-left"></div>
+			 {%for i in range(2,20):%}
+            <div class="col-xs-12 text-left"><a href="{{ url_for('static', filename="pdf/page_" )}}{{i}}.png" data-lightbox="page_{{i}}" data-title="page_{{i}}">上外附中初中人工智能学习手册_page_{{i}} </a></div>
+			  {%endfor%}
+			  
+          </div>
         </div>
+      </div>
     </div>
   </div>
+<!--
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
       <div class="row info-info">
-        
         <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
-        
       </div>
     </div>
     <div class="col-xs-3"> </div>
   </div>
+-->
 </div>
 </body>
 </html>
