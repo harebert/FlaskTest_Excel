@@ -121,17 +121,17 @@ def img2ExcelBlack(img,Excel):
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return render_template('index.html')
 
 @app.route('/uploads', methods=['POST', 'GET'])
 def uploads():
     return "uploads/"
 
 
-@app.route('/upload', methods=['POST', 'GET'])
+@app.route('/convolutionScaled', methods=['POST', 'GET'])
 
-def upload():
+def convolutionScaled():
     import uuid
     import xlsxwriter  # 导入模块
     newfilename = str(uuid.uuid1())
@@ -173,7 +173,7 @@ def upload():
 
             print(newfilename)
 
-            return redirect(url_for('upload'))
+            return redirect(url_for('convolutionScaled'))
     return render_template('upload.html')
 
 
