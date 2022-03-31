@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row{
+    padding: 5px 5px 5px 5px
+
+
+}
+.button_wrap{
+    padding: 5px 5px 5px 5px;
+}
+.innerLayer:{
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    border:solid 1px blue;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
+
+<title>上外附中 人工智能学习资源平台</title>
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="/">SFLS</a> </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://www.sfls.cn">官网 <span class="sr-only">(current)</span></a></li>
+        <li><a href="http://sfls.noi.top/">上外附中信息学科学习平台</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">本站资源 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3"> </div>
+    <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">文件上传</div>
+          <div class="panel-body">
+            <div class="row">
+                <h1>上传图片</h1>
+                <form action="" enctype='multipart/form-data' method='POST'>
+                    <div class="form-group">
+                        <label for="exampleInputFile">选择文件</label>
+                        <input type="file" name="file" id="exampleInputFile">
+                        <p class="help-block">只限上传jpg文档，文件请用 英文命名，文件不超过1M.</p>
+                    </div>
+                    <input class="btn btn-default" type="submit" value="上传">
+                </form>
+            </div>
+          </div>
+        </div>
+        <div class="innerLayer">
+            <div class="panel panel-default">
+              <div class="panel-heading">下载默认文档</div>
+              <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/fanStar.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStarT.txt") }}" download="imagfanStarT.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStarH.txt") }}" download="fanStarH.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：H文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStarS.txt") }}" download="fanStarS.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：S文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/fanStarV.txt") }}" download="image/fanStarV.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：V文件 </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/van_2.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2.txt") }}" download="van_2.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_H.txt") }}" download="van_2_H.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：H文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_S.txt") }}" download="van_2_S.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：S文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/van_2_V.txt") }}" download="van_2_V.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：V文件 </a>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <img src="{{ url_for('static', filename="image/Rembrandt.JPG" )}}" alt="..." class="img-thumbnail">
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt.txt") }}" download="Rembrandt.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：灰度文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_H.txt") }}" download="Rembrandt_H.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：H文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_S.txt") }}" download="Rembrandt_S.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：S文件 </a>
+                        </div>
+                        <div class="button_wrap">
+                            <a class="btn btn-default" href="{{ url_for('static', filename="image/Rembrandt_V.txt") }}" download="Rembrandt_V.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：V文件 </a>
+                        </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">下载上传的文档</div>
+            <div class="panel-body">
+                {% if session['HSVfilename'] %}
+                    <div>
+                        <img class="img-thumbnail" src="{{ url_for('static', filename=session['HSVfilename'])+"."+session["HSVextName"] }}">
+                    </div>
+                    <br>
+     <!-- <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".xlsx" }}"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>下载：Excel文件</a> </div>
+      <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".txt" }}"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>下载：txt文件</a> </div>-->
+                    <div >
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+".xlsx" }}" download="{{session['HSVfilename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：Excel </a></div><br>
+                    <div>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+".txt" }}" download="{{session['HSVfilename']}}.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：txt文件 </a></div><br>
+                    <div>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+"_H.txt" }}" download="{{session['HSVfilename']}}_H.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：色度txt文件 </a></div><br>
+                    <div>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+"_S.txt" }}" download="{{session['HSVfilename']}}_S.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：饱和度txt文件 </a></div><br>
+                    <div>
+                        <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+"_V.txt" }}" download="{{session['HSVfilename']}}_V.txt" role="button"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span> 下载：亮度txt文件 </a></div><br>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
+      <div class="row info-info">
+        
+        <div class="col-xs-12 text-center"><img src="{{ url_for('static', filename="image/exchange.jpg") }}"></div>
+        
+      </div>
+    </div>
+    <div class="col-xs-4"> </div>
+  </div>
+</div>
+</body>
+</html>
