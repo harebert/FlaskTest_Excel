@@ -180,6 +180,12 @@ def img2ExcelBlackLBP(img,Excel):
 def index():
     return render_template('index.html')
 
+
+@app.route('/softwareDownload')
+def softwareDownload():
+    return render_template('softwareDownload.html')
+
+
 @app.route('/uploads', methods=['POST', 'GET'])
 def uploads():
     return "uploads/"
