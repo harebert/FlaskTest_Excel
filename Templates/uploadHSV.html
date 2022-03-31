@@ -124,8 +124,8 @@
                         <img class="img-thumbnail" src="{{ url_for('static', filename=session['HSVfilename'])+"."+session["HSVextName"] }}">
                     </div>
                     <br>
-     <!-- <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".xlsx" }}"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>下载：Excel文件</a> </div>
-      <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".txt" }}"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>下载：txt文件</a> </div>-->
+{#     <!-- <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".xlsx" }}"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>下载：Excel文件</a> </div>#}
+{#      <div> <a href="{{ url_for('static', filename=session['HSVfilename'])+".txt" }}"> <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>下载：txt文件</a> </div>-->#}
                     <div >
                         <a class="btn btn-default" href="{{ url_for('static', filename=session['HSVfilename'])+".xlsx" }}" download="{{session['HSVfilename']}}.xlsx" role="button"> <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 下载：Excel </a></div><br>
                     <div>
