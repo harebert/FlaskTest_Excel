@@ -428,5 +428,42 @@ def uploadHSV():
             f.close()
             return redirect(url_for('uploadHSV'))
     return render_template('uploadHSV.html')
+
+
+@app.route('/recordRelative',methods=['POST','GET'])    #正负相关性网页学生作品记录
+def recordRelative():
+    tempDic = {}
+    if request.method == 'POST':
+        tempDic={}
+        for i,I in request.values.items():
+            tempDic[i]=I
+        print(tempDic)
+        import sqlite3
+        import time
+        basepath = os.path.dirname(__file__)
+        datafilePath=os.path.join(basepath, 'Data/Dataset.db')
+        conn = sqlite3.connect(datafilePath)
+        class_=tempDic["Grade"]
+        stu_s=tempDic["stus"]
+        Urls=tempDic["url"]
+        date_=time.strftime("%Y-%m-%d", time.localtime())
+        time_=time.strftime("%H:%M:%S", time.localtime())
+        c = conn.cursor()
+        timeNow = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        #print(timeNow)
+        sql = "INSERT INTO relativeData (class_,stus_,Urls_,date_,time_) VALUES ('%s','%s','%s','%s','%s')" % (class_,stu_s,Urls,date_, time_)
+        print(sql)
+        c.execute(sql)
+
+        conn.commit()
+        # conn.close()
+        tempDic["status"]="Success"
+        print("增加数据成功")
+        return render_template('uploadSuccess.html' ,contents=tempDic)
+    else:
+        tempDic["status"] = "Failed"
+        tempDic["url"]="ai.sfls.cn"
+        return render_template('uploadSuccess.html' ,contents=tempDic)
+
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5050,debug=True)
