@@ -45,11 +45,13 @@
 				  var modal = $(this)
 				  modal.find('.modal-title').text('预览')
 					//modal.find('.modal-body').text("<iframe width='500' height='440' frameborder='0' src='"+recipient+"'></iframe>")
-				var iframe=document.createElement("iframe")
-				iframe.setAttribute("frameborder",'0')
-				iframe.setAttribute("width",'500')
-				iframe.setAttribute("height",'400')
-				$(this).find('.modal-body').append(iframe)
+				var iframe=$(this).find('.modal-body').find('.frame')
+				iframe.attr("src",recipient)
+//				iframe.setAttribute("src")=recipient
+				iframe.attr("frameborder",'0')
+				iframe.attr("width",'500')
+				iframe.attr("height",'400')
+				//$(this).find('.modal-body').append(iframe)
 				
 				});
 });
@@ -101,7 +103,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
-      <div class="modal-body">...</div>
+		<div class="modal-body"><iframe class="frame"></iframe></div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
