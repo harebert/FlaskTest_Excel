@@ -32,10 +32,37 @@
 <script>
 	
 	$(document).ready(function(){
-//		  $("#click1").click(function(){
-//
-//			$('#myModal').modal('toggle');
-//		  });
+		  $(".scoreBut").click(
+				function(){
+				var button=$(this)
+				
+				var id_=button.attr("id").split("_")[1]
+				console.log("this is add"+ id_)
+				var temp = document.createElement("form");
+				 //temp.action = "http://ai.sfls.cn:5050/seeRelative";
+				 temp.action = "http://localhost:5050/seeRelative";
+				 temp.method = "post";
+				 temp.style.display = "none";
+				var params = {
+						"id_":id_,
+						"action":button.attr("id").split("_")[0]
+						
+					 };
+				 for (var x in params) {
+				  var opt = document.createElement("textarea");
+				  opt.name = x;
+				  opt.value = params[x];
+				  temp.appendChild(opt);
+				 }
+
+				 document.body.appendChild(temp);
+				 temp.submit();
+
+				 return temp;
+			 		
+				}
+		
+		);
 
 			$('#myModal').on('show.bs.modal', function (event) {
 				  var button = $(event.relatedTarget) // Button that triggered the modal
@@ -50,8 +77,10 @@
 //				iframe.setAttribute("src")=recipient
 				iframe.attr("frameborder",'0')
 				iframe.attr("width",'500')
-				iframe.attr("height",'400')
+				iframe.attr("height",'600')
 				//$(this).find('.modal-body').append(iframe)
+				var aLink=$(this).find('.modal-footer').find('.frameLink')
+				aLink.attr("href",recipient)
 				
 				});
 });
@@ -74,21 +103,20 @@
       <div class="col-xs-2 text-center">查看</div>
       <div class="col-xs-2 text-center">分数</div>
     </div>
-	  
-	  
     {%for item in contents:%}
     <div class="row">
       <div class="col-xs-2 text-center">{{item.id_}}</div>
       <div class="col-xs-2 text-center">{{item.class_}}</div>
       <div class="col-xs-2 text-center">{{item.stus_}}</div>
       <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
-      <div class="col-xs-2 text-center"> 
-		  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button>
-		
-		
+      <div class="col-xs-2 text-center">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button>
+      </div>
+      <div class="col-xs-2 text-center">
+		  <button type="button" class="btn btn-primary btn-sm scoreBut" id="min_{{item.id_}}">-</button>
+		  {{item.score_}}
+		<button type="button" class="btn btn-primary btn-sm scoreBut" id="add_{{item.id_}}">+</button>
 		</div>
-      <div class="col-xs-2 text-center">{{item.score_}}</div>
-      <div class="col-xs-2 text-center">{{item.score_}}</div>
     </div>
     {%endfor%} </div>
   <div class=" col-xs-2"></div>
@@ -103,11 +131,12 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
-		<div class="modal-body"><iframe class="frame"></iframe></div>
+      <div class="modal-body">
+        <iframe class="frame"></iframe>
+      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-      </div>
+        <a href="#" class="btn btn-primary btn-md frameLink" role="button" target="_blank">新页面打开</a></div>
     </div>
   </div>
 </div>
