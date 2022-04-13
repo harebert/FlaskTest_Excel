@@ -549,7 +549,7 @@ def seeRelativeSut():
 
 
 
-    content = c.execute("select * from relativeData")
+    content = c.execute("select * from relativeData where score>0")
     record=[]
     for row in content:
         tempDic = {}
