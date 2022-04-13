@@ -115,6 +115,7 @@
 
     </div>
     {%endfor%} 
+	  
 	<p class="bg-danger text-center"><br>以下为未通过的作品<br>原因可能为：</p>
 	  <p class="text-danger text-center"><br>
 			1.缺少元素（中文注释等）<br>
@@ -123,6 +124,21 @@
 
 			以上小组请重新递交</p>
 	{%for item in contents.failed:%}
+    <div class="row">
+      <div class="col-xs-2 text-center">{{item.id_}}</div>
+      <div class="col-xs-2 text-center">{{item.class_}}</div>
+      <div class="col-xs-2 text-center">{{item.stus_}}</div>
+      <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
+      <div class="col-xs-2 text-center">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" disabled="disabled">查看</button>
+      </div>
+
+    </div>
+    {%endfor%} 
+	  
+	  <p class="bg-default text-center"><br>以下为未批阅作品，请等待审核：</p>
+	  
+	{%for item in contents.unknown:%}
     <div class="row">
       <div class="col-xs-2 text-center">{{item.id_}}</div>
       <div class="col-xs-2 text-center">{{item.class_}}</div>

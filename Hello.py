@@ -572,6 +572,7 @@ def seeRelativeSut():
     record= {}
     success=[]
     failed=[]
+    unknown=[]
     for row in content:
         tempDic = {}
         tempDic["id_"]=row[0]
@@ -584,11 +585,14 @@ def seeRelativeSut():
         #tempDic["id"] = row[0]
         if tempDic["score_"]>5:
             success.append(tempDic)
-        else:
+        elif tempDic["score_"]>0:
             failed.append(tempDic)
+        else:
+            unknown.append(tempDic)
         #print(row)
     record["success"]=success
     record["failed"]=failed
+    record["unknown"]=unknown
     print(record)
     return render_template('seeRelativeStu.html' ,contents=record)
 
