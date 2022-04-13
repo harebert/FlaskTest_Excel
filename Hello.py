@@ -582,7 +582,7 @@ def seeRelativeSut():
         tempDic["time_"] = row[5]
         tempDic["score_"] = row[6]
         #tempDic["id"] = row[0]
-        if tempDic["score"]>5:
+        if tempDic["score_"]>5:
             success.append(tempDic)
         else:
             failed.append(tempDic)
