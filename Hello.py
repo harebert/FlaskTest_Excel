@@ -538,11 +538,11 @@ def seeRelativeSut():
             sql = "UPDATE relativeData SET score = score +1  where id=%d" % int(tempDic["id_"])
         elif tempDic["action"]=="min":
             sql = "UPDATE relativeData SET score = score -1  where id=%d" % int(tempDic["id_"])
-        elif tempDic["action"]=="P5":
+        elif tempDic["action"]=="p5":
             sql = "UPDATE relativeData SET score = 5  where id=%d" % int(tempDic["id_"])
-        elif tempDic["action"] == "P8":
+        elif tempDic["action"] == "p8":
             sql = "UPDATE relativeData SET score = 8  where id=%d" % int(tempDic["id_"])
-        elif tempDic["action"] == "P10":
+        elif tempDic["action"] == "p10":
             sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
         print(sql)
         c.execute(sql)
