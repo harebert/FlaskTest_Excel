@@ -568,8 +568,10 @@ def seeRelativeSut():
 
 
 
-    content = c.execute("select * from relativeData where score>5 order by score desc")
-    record=[]
+    content = c.execute("select * from relativeData order by score desc")
+    record= {}
+    success=[]
+    failed=[]
     for row in content:
         tempDic = {}
         tempDic["id_"]=row[0]
@@ -580,8 +582,13 @@ def seeRelativeSut():
         tempDic["time_"] = row[5]
         tempDic["score_"] = row[6]
         #tempDic["id"] = row[0]
-        record.append(tempDic)
+        if tempDic["score"]>5:
+            success.append(tempDic)
+        else:
+            failed.append(tempDic)
         #print(row)
+    record["success"]=success
+    record["failed"]=failed
     print(record)
     return render_template('seeRelativeStu.html' ,contents=record)
 
