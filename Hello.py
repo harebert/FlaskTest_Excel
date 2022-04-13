@@ -465,8 +465,8 @@ def recordRelative():
         tempDic["url"]="ai.sfls.cn"
         return render_template('uploadSuccess.html' ,contents=tempDic)
 
-@app.route('/seeRelative',methods=['POST','GET'])    #正负相关性网页学生作品记录查看
-def seeRelative():
+@app.route('/seeRelativeScore',methods=['POST','GET'])    #正负相关性网页学生作品记录查看
+def seeRelativeScore():
     import sqlite3
     #如果有加分减分的动作，则先登分
     basepath = os.path.dirname(__file__)
@@ -511,13 +511,63 @@ def seeRelative():
         record.append(tempDic)
         #print(row)
     print(record)
-    return render_template('seeRelative.html' ,contents=record)
+    return render_template('seeRelativeScore.html' ,contents=record)
 
         # tempDic["status"] = "Failed"
         # tempDic["url"]="ai.sfls.cn"
        # return render_template('uploadSuccess.html' ,contents=tempDic)
 
 
+@app.route('/seeRelativeStu',methods=['POST','GET'])    #正负相关性网页学生作品记录查看
+def seeRelativeSut():
+    import sqlite3
+    #如果有加分减分的动作，则先登分
+    basepath = os.path.dirname(__file__)
+    datafilePath = os.path.join(basepath, 'Data/Dataset.db')
+    conn = sqlite3.connect(datafilePath)
+    c = conn.cursor()
+    if request.method == 'POST':
+        tempDic = {}
+        #print(request.values)
+        for i, I in request.values.items():
+            tempDic[i] = I
+            print(I)
+        pass
 
+        if tempDic["action"]=="add":
+            sql = "UPDATE relativeData SET score = score +1  where id=%d" % int(tempDic["id_"])
+        elif tempDic["action"]=="min":
+            sql = "UPDATE relativeData SET score = score -1  where id=%d" % int(tempDic["id_"])
+        print(sql)
+        c.execute(sql)
+
+        conn.commit()
+        # conn.close()
+
+    #如果是查看GET，则返回所有记录
+
+
+
+
+    content = c.execute("select * from relativeData")
+    record=[]
+    for row in content:
+        tempDic = {}
+        tempDic["id_"]=row[0]
+        tempDic["class_"] = row[1]
+        tempDic["stus_"] = row[2]
+        tempDic["Urls_"] = row[3]
+        tempDic["date_"] = row[4]
+        tempDic["time_"] = row[5]
+        tempDic["score_"] = row[6]
+        #tempDic["id"] = row[0]
+        record.append(tempDic)
+        #print(row)
+    print(record)
+    return render_template('seeRelativeStu.html' ,contents=record)
+
+        # tempDic["status"] = "Failed"
+        # tempDic["url"]="ai.sfls.cn"
+       # return render_template('uploadSuccess.html' ,contents=tempDic)
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5050,debug=True)

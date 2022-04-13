@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.web_item {
+	margin: 10px 0 10px 0;
+}
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row {
+	padding: 5px 5px 5px 5px
+}
+.button_wrap {
+	padding: 5px 5px 5px 5px;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
+
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script> 
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
+<script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
+<script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script> 
+<script>
+	
+	$(document).ready(function(){
+		  $(".scoreBut").click(
+				function(){
+				var button=$(this)
+				
+				var id_=button.attr("id").split("_")[1]
+				console.log("this is add"+ id_)
+				var temp = document.createElement("form");
+				 temp.action = "http://ai.sfls.cn:5050/seeRelative";
+				 //temp.action = "http://localhost:5050/seeRelative";
+				 temp.method = "post";
+				 temp.style.display = "none";
+				var params = {
+						"id_":id_,
+						"action":button.attr("id").split("_")[0]
+						
+					 };
+				 for (var x in params) {
+				  var opt = document.createElement("textarea");
+				  opt.name = x;
+				  opt.value = params[x];
+				  temp.appendChild(opt);
+				 }
+
+				 document.body.appendChild(temp);
+				 temp.submit();
+
+				 return temp;
+			 		
+				}
+		
+		);
+
+			$('#myModal').on('show.bs.modal', function (event) {
+				  var button = $(event.relatedTarget) // Button that triggered the modal
+				  var recipient = button.data('url') // Extract info from data-* attributes
+				  
+				  console.log(recipient)
+				  var modal = $(this)
+				  modal.find('.modal-title').text('预览')
+					//modal.find('.modal-body').text("<iframe width='500' height='440' frameborder='0' src='"+recipient+"'></iframe>")
+				var iframe=$(this).find('.modal-body').find('.frame')
+				iframe.attr("src",recipient)
+//				iframe.setAttribute("src")=recipient
+				iframe.attr("frameborder",'0')
+				iframe.attr("width",'500')
+				iframe.attr("height",'600')
+				//$(this).find('.modal-body').append(iframe)
+				var aLink=$(this).find('.modal-footer').find('.frameLink')
+				aLink.attr("href",recipient)
+				
+				});
+});
+
+	
+	</script>
+<title>上外附中 人工智能学习资源平台</title>
+</head>
+
+<body>
+{% include "inc/head.html" %}
+<div class="row" >
+  <div class=" col-xs-2"></div>
+  <div class=" col-xs-8">
+    <div class="row">
+      <div class="col-xs-2 text-center">ID</div>
+      <div class="col-xs-2 text-center">班级</div>
+      <div class="col-xs-2 text-center">组员</div>
+      <div class="col-xs-2 text-center">递交时间</div>
+      <div class="col-xs-2 text-center">查看</div>
+      <div class="col-xs-2 text-center">分数</div>
+    </div>
+    {%for item in contents:%}
+    <div class="row">
+      <div class="col-xs-2 text-center">{{item.id_}}</div>
+      <div class="col-xs-2 text-center">{{item.class_}}</div>
+      <div class="col-xs-2 text-center">{{item.stus_}}</div>
+      <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
+      <div class="col-xs-2 text-center">
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button>
+      </div>
+      <div class="col-xs-2 text-center">
+		  <button type="button" class="btn btn-danger btn-sm scoreBut" id="min_{{item.id_}}">-</button>
+		  {{item.score_}}
+		<button type="button" class="btn btn-success btn-sm scoreBut" id="add_{{item.id_}}">+</button>
+		</div>
+    </div>
+    {%endfor%} </div>
+  <div class=" col-xs-2"></div>
+</div>
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <iframe class="frame"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="#" class="btn btn-primary btn-md frameLink" role="button" target="_blank">新页面打开</a></div>
+    </div>
+  </div>
+</div>
