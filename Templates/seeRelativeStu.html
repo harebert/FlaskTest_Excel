@@ -115,7 +115,11 @@
 
     </div>
     {%endfor%} 
-	<p class="bg-danger text-center"><br>以下为未通过的作品<br></p>
+	<p class="bg-danger text-center"><br>以下为未通过的作品<br>原因可能为：</p>
+	  <p class="text-danger text-center"><br>
+			1.缺少元素（中文注释等）<br>
+			2.注释过于啰嗦，导致链接无法打开<br>
+			请重新递交</p>
 	{%for item in contents.failed:%}
     <div class="row">
       <div class="col-xs-2 text-center">{{item.id_}}</div>
