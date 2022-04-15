@@ -445,7 +445,7 @@ def recordRelative():
         conn = sqlite3.connect(datafilePath)
         class_=tempDic["Grade"]
         stu_s=tempDic["stus"]
-        Urls=tempDic["url"]
+        Urls=tempDic["url"].replace("'","_")
         date_=time.strftime("%Y-%m-%d", time.localtime())
         time_=time.strftime("%H:%M:%S", time.localtime())
         c = conn.cursor()
@@ -485,13 +485,14 @@ def seeRelativeScore():
             sql = "UPDATE relativeData SET score = score +1  where id=%d" % int(tempDic["id_"])
         elif tempDic["action"]=="min":
             sql = "UPDATE relativeData SET score = score -1  where id=%d" % int(tempDic["id_"])
-        elif tempDic["action"] == "p5":
-            sql = "UPDATE relativeData SET score = 5  where id=%d" % int(tempDic["id_"])
-        elif tempDic["action"] == "p8":
-            sql = "UPDATE relativeData SET score = 8  where id=%d" % int(tempDic["id_"])
+        elif tempDic["action"][0] == "p":  # tempDic是P1 P2 P3 P4 P5等字符进行拆分
+            sql = "UPDATE relativeData SET score = %d  where id=%d" % (int(tempDic["action"][1]), int(tempDic["id_"]))
             print(sql)
-        elif tempDic["action"] == "p10":
-            sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
+            # elif tempDic["action"] == "p8":
+            #     sql = "UPDATE relativeData SET score = 8  where id=%d" % int(tempDic["id_"])
+            #     print(sql)
+            # elif tempDic["action"] == "p10":
+            #     sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
             print(sql)
         print(sql)
         c.execute(sql)
@@ -548,14 +549,14 @@ def seeRelativeSut():
         elif tempDic["action"]=="min":
             sql = "UPDATE relativeData SET score = score -1  where id=%d" % int(tempDic["id_"])
             print(sql)
-        elif tempDic["action"]=="p5":
-            sql = "UPDATE relativeData SET score = 5  where id=%d" % int(tempDic["id_"])
+        elif tempDic["action"][0]=="p": #tempDic是P1 P2 P3 P4 P5等字符进行拆分
+            sql = "UPDATE relativeData SET score = %d  where id=%d" % (tempDic["action"][1],int(tempDic["id_"]))
             print(sql)
-        elif tempDic["action"] == "p8":
-            sql = "UPDATE relativeData SET score = 8  where id=%d" % int(tempDic["id_"])
-            print(sql)
-        elif tempDic["action"] == "p10":
-            sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
+        # elif tempDic["action"] == "p8":
+        #     sql = "UPDATE relativeData SET score = 8  where id=%d" % int(tempDic["id_"])
+        #     print(sql)
+        # elif tempDic["action"] == "p10":
+        #     sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
             print(sql)
 
         c.execute(sql)

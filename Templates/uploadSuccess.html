@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <style type="text/css">
-    .web_item{
-        margin: 10px 0 10px 0;
-
-    }
+.web_item {
+	margin: 10px 0 10px 0;
+}
 .info-info {
 	border: thin solid #336699;
 	border-radius: 5px 5px 5px 5px;
@@ -16,7 +15,6 @@
 .button_wrap {
 	padding: 5px 5px 5px 5px;
 }
-
 </style>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
 
@@ -35,13 +33,14 @@
 </head>
 
 <body>
-
 {% include "inc/head.html" %}
-<div class="row" >	
-	<div class="jumbotron">
-  <h1>{{contents.status}}	</h1>
-  <p>...</p>
-		<p><a class="btn btn-primary btn-lg" href="{{contents.url}}" role="button">返回</a></p>
-</div>
+<div class="container">
+  <div class="row" >
+    <div class="jumbotron">
+      <h1>{{contents.status}} </h1>
+      <p><a href="http://ai.sfls.cn:5050/seeRelativeStu" class="btn btn-primary btn-lg" role="button">点击查看所有作品</a></p>
+      <p><a class="btn btn-primary btn-lg" href="{{contents.url}}" role="button">返回</a></p>
+    </div>
+  </div>
 </div>
 </body>
