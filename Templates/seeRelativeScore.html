@@ -100,8 +100,8 @@
       <div class="col-xs-1 text-center">班级</div>
       <div class="col-xs-2 text-center">组员</div>
       <div class="col-xs-2 text-center">递交时间</div>
-      <div class="col-xs-2 text-center">查看</div>
-      <div class="col-xs-4 text-center">分数</div>
+      <div class="col-xs-1 text-center">查看</div>
+      <div class="col-xs-5 text-center">分数</div>
     </div>
     {%for item in contents:%}
     <div class="row">
@@ -109,25 +109,28 @@
       <div class="col-xs-1 text-center">{{item.class_}}</div>
       <div class="col-xs-2 text-center">{{item.stus_}}</div>
       <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
-      <div class="col-xs-2 text-center">
+      <div class="col-xs-1 text-center">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button>
       </div>
-      <div class="col-xs-4 text-center">
-		  <button type="button" class="btn btn-danger btn-sm scoreBut" id="min_{{item.id_}}">-</button>
-		  {{item.score_}}
-		<button type="button" class="btn btn-success btn-sm scoreBut" id="add_{{item.id_}}">+</button>
-		  
-<!--
+      <div class="col-xs-5 text-center">
+        <button type="button" class="btn btn-danger btn-sm scoreBut" id="min_{{item.id_}}">-</button>
+        {{item.score_}}
+        <button type="button" class="btn btn-success btn-sm scoreBut" id="add_{{item.id_}}">+</button>
+        
+        <!--
 		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p5_{{item.id_}}">5</button>
 		  
 		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p8_{{item.id_}}">8</button>
 		  
 		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p10_{{item.id_}}">10</button>
 -->
-		  {%for i in range(11):%}
-		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p{{i}}_{{item.id_}}">{{i}}</button>
-		  {%endfor%}
-		</div>
+        <div class="btn-group" role="group" aria-label="...">
+			{%for i in range(11):%}
+        <button type="button" class="btn btn-default btn-sm scoreBut" id="p{{i}}_{{item.id_}}">{{i}}</button>
+        {%endfor%} </div>
+          
+        </div>
+        
     </div>
     {%endfor%} </div>
   <div class=" col-xs-2"></div>
