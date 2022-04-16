@@ -76,28 +76,37 @@
             <div class="link-item"><a href="http://exam.sfls.cn/web/setosa.io/linearregression.html" target="_blank">线性回归体验</a></div>
             #}
             <div class="row">
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/HSV.png" )}}" alt="..." class="img-thumbnail">
+                {% col_s=4 %}
+              <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/HSV.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="/uploadHSV"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> HSV转换文件下载 </a> </div>
               </div>
-                <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/LBP.png" )}}" alt="..." class="img-thumbnail">
+                <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/LBP.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="/uploadLBP"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> LBP转换文件下载 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/CONVCAL.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/CONVCAL.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="/convolutionScaled"  role="button" target="_blank"> <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> 卷积与池化素材下载 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/CONVKERNEL.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/CONVKERNEL.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/imagekernels.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 卷积及卷积核在线体验 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/LINEAR.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/LINEAR.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/linearregression.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 线性回归在线体验 </a> </div>
               </div>
 
-                <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/CP.png" )}}" alt="..." class="img-thumbnail">
+                <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/CP.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/conditional-probability_.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 条件概率在线体验 </a> </div>
               </div>
 
-                <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/LOOP.png" )}}" alt="..." class="img-thumbnail">
+                <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/LOOP.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/ncase.me/index.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 系统化思维在线体验 </a> </div>
+              </div>
+
+                   <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/pi.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/Pi.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 什么是Pi </a> </div>
+              </div>
+
+                   <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="image/SinAndCosin.png" )}}" alt="..." class="img-thumbnail">
+                <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/Sine-and-Cosine-explained-visually.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 正弦与余弦 </a> </div>
               </div>
 
 
@@ -121,26 +130,27 @@
               {#
               <div class="link-item"><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank">清华大学开源软件镜像站</a></div>
               #}
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/JSON.png" )}}" alt="..." class="img-thumbnail">
+                {% col_h=3 %}
+              <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/JSON.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/HTMLformatter"  role="button" target="_blank"> <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span> HTML/JSON数据格式化 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/COLOR.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/COLOR.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/onlineColorPicker/onlineColorPicker.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 颜色拾取器 </a> </div>
               </div>
-                    <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/KNN.png" )}}" alt="..." class="img-thumbnail">
+                    <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/KNN.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/KNN/KNN.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> K近邻算法 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/PADDLE.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/PADDLE.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="{{ url_for('static', filename="uploads/飞桨AI Studio_注册使用指南.pdf") }}"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 飞桨注册使用指南 </a> </div>
               </div>
-              <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/TUNA.png" )}}" alt="..." class="img-thumbnail">
+              <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/TUNA.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/"  role="button" target="_blank"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 清华大学开源软件镜像 </a> </div>
               </div>
-                    <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/PCA.png" )}}" alt="..." class="img-thumbnail">
+                    <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/PCA.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/principal-component-analysis.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> PCA主成分分析 </a> </div>
               </div>
 
-                   <div class="col-xs-3 text-center web_item"> <img src="{{ url_for('static', filename="image/MARKOV.png" )}}" alt="..." class="img-thumbnail">
+                   <div class="col-xs-{{ col_h }} text-center web_item"> <img src="{{ url_for('static', filename="image/MARKOV.png" )}}" alt="..." class="img-thumbnail">
                 <div class="button_wrap"> <a class="btn btn-default" href="http://ai.sfls.cn/web/setosa.io/markov-chains.html"  role="button" target="_blank"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 马尔科夫链 </a> </div>
               </div>
 
