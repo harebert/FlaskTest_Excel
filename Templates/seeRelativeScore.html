@@ -15,6 +15,9 @@
 .button_wrap {
 	padding: 5px 5px 5px 5px;
 }
+	.containerListRow{
+		border-bottom: thin #DDDDDD solid;
+	}
 </style>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
 
@@ -39,13 +42,18 @@
 				var id_=button.attr("id").split("_")[1]
 				console.log("this is add"+ id_)
 				var temp = document.createElement("form");
-				 temp.action = "http://ai.sfls.cn:5050/seeRelativeScore";
-				 //temp.action = "http://localhost:5050/seeRelative";
+				 //temp.action = "http://ai.sfls.cn:5050/seeRelativeScore";
+				 temp.action = "http://localhost:5050/seeRelativeScore";
 				 temp.method = "post";
 				 temp.style.display = "none";
 				var params = {
 						"id_":id_,
-						"action":button.attr("id").split("_")[0]
+						"action":button.attr("id").split("_")[0],
+						"A":$("#A_"+id_).val(),
+					"B":$("#B_"+id_).val(),
+					"C":$("#C_"+id_).val(),
+					"D":$("#D_"+id_).val(),
+					"E":$("#E_"+id_).val(),
 						
 					 };
 				 for (var x in params) {
@@ -92,49 +100,62 @@
 
 <body>
 {% include "inc/head.html" %}
-<div class="row" >
-  <div class=" col-xs-2"></div>
-  <div class=" col-xs-8">
+<div class="row" > 
+  <!--  <div class=" col-xs-2"></div>
+-->
+  <div class=" col-xs-12">
     <div class="row">
       <div class="col-xs-1 text-center">ID</div>
       <div class="col-xs-1 text-center">班级</div>
       <div class="col-xs-2 text-center">组员</div>
-      <div class="col-xs-2 text-center">递交时间</div>
+      <!--      <div class="col-xs-2 text-center">递交时间</div>
+-->
       <div class="col-xs-1 text-center">查看</div>
-      <div class="col-xs-5 text-center">分数</div>
+      <div class="col-xs-3 text-center">分数</div>
+      <div class="col-xs-4 text-center">等第投票</div>
     </div>
     {%for item in contents:%}
-    <div class="row">
+    <div class="row containerListRow">
       <div class="col-xs-1 text-center">{{item.id_}}</div>
       <div class="col-xs-1 text-center">{{item.class_}}</div>
       <div class="col-xs-2 text-center">{{item.stus_}}</div>
-      <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
+      <!--      <div class="col-xs-2 text-center">{{item.date_}} {{item.time_}}</div>
+-->
       <div class="col-xs-1 text-center">
         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button>
       </div>
-      <div class="col-xs-5 text-center">
+      <div class="col-xs-3 text-center">
         <button type="button" class="btn btn-danger btn-sm scoreBut" id="min_{{item.id_}}">-</button>
         {{item.score_}}
         <button type="button" class="btn btn-success btn-sm scoreBut" id="add_{{item.id_}}">+</button>
-        
-        <!--
-		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p5_{{item.id_}}">5</button>
-		  
-		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p8_{{item.id_}}">8</button>
-		  
-		  <button type="button" class="btn btn-default btn-sm scoreBut" id="p10_{{item.id_}}">10</button>
--->
-        <div class="btn-group" role="group" aria-label="...">
-			{%for i in range(11):%}
-        <button type="button" class="btn btn-default btn-sm scoreBut" id="p{{i}}_{{item.id_}}">{{i}}</button>
-        {%endfor%} </div>
-          
-        </div>
-        
+        <div class="btn-group" role="group" aria-label="..."> {%for i in range(11):%}
+          <button type="button" class="btn btn-default btn-sm scoreBut" id="p{{i}}_{{item.id_}}">{{i}}</button>
+          {%endfor%} </div>
+      </div>
+      <div class="col-xs-4	 text-center">
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" id="A_{{item.id_}}" maxlength="2" placeholder="A" value="{{item.A}}" size="1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="B_{{item.id_}}" maxlength="2" placeholder="B" value="{{item.B}}" size="1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="C_{{item.id_}}" maxlength="2" placeholder="C" value="{{item.C}}" size="1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="D_{{item.id_}}" maxlength="2" placeholder="D" value="{{item.D}}" size="1">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="E_{{item.id_}}" maxlength="2" placeholder="E" value="{{item.E}}" size="1">
+          </div>
+          <button type="button" class="btn btn-default scoreBut" id="vote_{{item.id_}}">VOTE!</button>
+        </form>
+      </div>
     </div>
     {%endfor%} </div>
-  <div class=" col-xs-2"></div>
-</div>
+  <!--  <div class=" col-xs-2"></div>
+--></div>
 </body>
 
 <!-- Modal -->

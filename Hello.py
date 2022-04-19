@@ -493,7 +493,11 @@ def seeRelativeScore():
             #     print(sql)
             # elif tempDic["action"] == "p10":
             #     sql = "UPDATE relativeData SET score = 10  where id=%d" % int(tempDic["id_"])
-            print(sql)
+        elif tempDic["action"] == "vote":  # tempDic是P1 P2 P3 P4 P5等字符进行拆分
+            #sql = "UPDATE relativeData SET score = %d  where id=%d" % (int(tempDic["action"][1]), int(tempDic["id_"]))
+            sql = "UPDATE relativeData SET A = %d,B = %d,C = %d,D = %d,E = %d  where id=%d" % (int(tempDic["A"]),int(tempDic["B"]),int(tempDic["C"]),int(tempDic["D"]),int(tempDic["E"]), int(tempDic["id_"]))
+            #print(sql)
+            #print(sql)
         print(sql)
         c.execute(sql)
 
@@ -516,10 +520,15 @@ def seeRelativeScore():
         tempDic["date_"] = row[4]
         tempDic["time_"] = row[5]
         tempDic["score_"] = row[6]
+        tempDic["A"] = row[7]
+        tempDic["B"] = row[8]
+        tempDic["C"] = row[9]
+        tempDic["D"] = row[10]
+        tempDic["E"] = row[11]
         #tempDic["id"] = row[0]
         record.append(tempDic)
         #print(row)
-    print(record)
+    #print(record)
     return render_template('seeRelativeScore.html' ,contents=record)
 
         # tempDic["status"] = "Failed"
@@ -567,9 +576,27 @@ def seeRelativeSut():
     #如果是查看GET，则返回所有记录
 
 
+    classDic={}
+    #print(request.values)
+    for i, I in request.values.items():
+        classDic[i] = I
+        print(I)
+    print(classDic)
+    #通过get方式，选择班级，
+    try:
+        if classDic["class"]=="G6C2":
+            sql="select * from relativeData where class_='%s' order by score desc"%"中预(2)班"
+        elif classDic["class"]=="G6C3":
+            sql = "select * from relativeData where class_='%s' order by score desc"%"中预(3)班"
+        elif classDic["class"]=="G6C7":
+            sql = "select * from relativeData where class_='%s' order by score desc"%"中预(MYP)班"
+        else:
+            sql = "select * from relativeData order by score desc"
+    except:
+        classDic["class"] = ""
+        sql="select * from relativeData order by score desc"
 
-
-    content = c.execute("select * from relativeData order by score desc")
+    content = c.execute(sql)
     record= {}
     success=[]
     failed=[]
@@ -583,6 +610,11 @@ def seeRelativeSut():
         tempDic["date_"] = row[4]
         tempDic["time_"] = row[5]
         tempDic["score_"] = row[6]
+        tempDic["A"] = row[7]
+        tempDic["B"] = row[8]
+        tempDic["C"] = row[9]
+        tempDic["D"] = row[10]
+        tempDic["E"] = row[11]
         #tempDic["id"] = row[0]
         if tempDic["score_"]>5:
             success.append(tempDic)
@@ -594,7 +626,8 @@ def seeRelativeSut():
     record["success"]=success
     record["failed"]=failed
     record["unknown"]=unknown
-    print(record)
+    record["class_"]=classDic["class"]
+    #print(record)
     return render_template('seeRelativeStu.html' ,contents=record)
 
         # tempDic["status"] = "Failed"
