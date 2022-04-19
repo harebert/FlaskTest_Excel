@@ -525,6 +525,10 @@ def seeRelativeScore():
         tempDic["C"] = row[9]
         tempDic["D"] = row[10]
         tempDic["E"] = row[11]
+        if (int(row[7])+int(row[8])+int(row[9])+int(row[10])+int(row[11]))!=0:
+            tempDic["voteScore"]=100/((int(row[7])+int(row[8])+int(row[9])+int(row[10])+int(row[11]))*4)*((int(row[7])*4+int(row[8])*3+int(row[9])*2+int(row[10])))
+        else:
+            tempDic["voteScore"] = 0
         #tempDic["id"] = row[0]
         record.append(tempDic)
         #print(row)
@@ -615,6 +619,10 @@ def seeRelativeSut():
         tempDic["C"] = row[9]
         tempDic["D"] = row[10]
         tempDic["E"] = row[11]
+        if (int(row[7])+int(row[8])+int(row[9])+int(row[10])+int(row[11]))!=0:
+            tempDic["voteScore"]=int(100/((int(row[7])+int(row[8])+int(row[9])+int(row[10])+int(row[11]))*4)*((int(row[7])*4+int(row[8])*3+int(row[9])*2+int(row[10]))))
+        else:
+            tempDic["voteScore"] = 0
         #tempDic["id"] = row[0]
         if tempDic["score_"]>5:
             success.append(tempDic)
