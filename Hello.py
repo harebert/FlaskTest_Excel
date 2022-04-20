@@ -506,10 +506,27 @@ def seeRelativeScore():
 
     #如果是查看GET，则返回所有记录
 
+    classDic = {}
+    # print(request.values)
+    for i, I in request.values.items():
+        classDic[i] = I
+        print(I)
+    print(classDic)
+    # 通过get方式，选择班级，
+    try:
+        if classDic["class"] == "G6C2":
+            sql = "select * from relativeData where class_='%s' order by score desc" % "中预(2)班"
+        elif classDic["class"] == "G6C3":
+            sql = "select * from relativeData where class_='%s' order by score desc" % "中预(3)班"
+        elif classDic["class"] == "G6C7":
+            sql = "select * from relativeData where class_='%s' order by score desc" % "中预(MYP)班"
+        else:
+            sql = "select * from relativeData order by score desc"
+    except:
+        classDic["class"] = ""
+        sql = "select * from relativeData order by score desc"
 
-
-
-    content = c.execute("select * from relativeData")
+    content = c.execute(sql)
     record=[]
     for row in content:
         tempDic = {}

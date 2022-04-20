@@ -100,7 +100,15 @@
 
 <body>
 {% include "inc/head.html" %}
+	
 <div class="row" > 
+		<div class="col-xs-12 text-center">
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default{%if contents.class_=='All'%} active{%endif%}" onClick="javascript:window.location.href='?class=All'">ALL</button>
+  <button type="button" class="btn btn-default{%if contents.class_=='G6C2'%} active{%endif%}" onClick="javascript:window.location.href='?class=G6C2'">中预2班</button>
+  <button type="button" class="btn btn-default{%if contents.class_=='G6C3'%} active{%endif%}" onClick="javascript:window.location.href='?class=G6C3'">中预3班</button>
+  <button type="button" class="btn btn-default{%if contents.class_=='G6C7'%} active{%endif%}" onClick="javascript:window.location.href='?class=G6C7'">中预MYP</button>
+</div></div>
   <!--  <div class=" col-xs-2"></div>
 -->
   <div class=" col-xs-12">
