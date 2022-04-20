@@ -653,8 +653,8 @@ def seeRelativeSut():
     record["unknown"]=unknown
     record["class_"]=classDic["class"]
     #print(record)
-    return render_template('seeRelativeStu.html' ,contents=record)
-
+    #return render_template('seeRelativeStu.html' ,contents=record)
+    return render_template('fixing.html')
         # tempDic["status"] = "Failed"
         # tempDic["url"]="ai.sfls.cn"
        # return render_template('uploadSuccess.html' ,contents=tempDic)
