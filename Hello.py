@@ -190,6 +190,10 @@ def softwareDownload():
 def uploads():
     return "uploads/"
 
+@app.route('/headNav', methods=['POST', 'GET'])
+def uploads():
+    return render_template('inc/head.html')
+
 
 @app.route('/convolutionScaled', methods=['POST', 'GET'])
 
