@@ -191,7 +191,7 @@ def uploads():
     return "uploads/"
 
 @app.route('/headNav', methods=['POST', 'GET'])
-def uploads():
+def headNav():
     return render_template('inc/head.html')
 
 
