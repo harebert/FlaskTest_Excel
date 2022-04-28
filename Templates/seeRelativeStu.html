@@ -70,10 +70,10 @@
 			$('#myModal').on('show.bs.modal', function (event) {
 				  var button = $(event.relatedTarget) // Button that triggered the modal
 				  var recipient = button.data('url') // Extract info from data-* attributes
-				  
+				  var stu= button.data('stu')
 				  console.log(recipient)
 				  var modal = $(this)
-				  modal.find('.modal-title').text('预览')
+				  modal.find('.modal-title').text(stu)
 					//modal.find('.modal-body').text("<iframe width='500' height='440' frameborder='0' src='"+recipient+"'></iframe>")
 				var iframe=$(this).find('.modal-body').find('.frame')
 				iframe.attr("src",recipient)
@@ -127,7 +127,7 @@
         <td class="text-center" valign="middle">{{item.class_}}</td>
         <td class="text-center" valign="middle">{{item.stus_}}</td>
         <td class="text-center" valign="middle">{{item.date_}} {{item.time_}}</td>
-        <td class="text-center" valign="middle"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}">查看</button></td>
+        <td class="text-center" valign="middle"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" data-url="{{item.Urls_}}" data-stu="{{item.class_}} - {{item.stus_}}">查看</button></td>
         <td class="text-center" valign="middle"><span class="label label-success">A:{{item.A}}</SPAN> <span class="label label-primary">B:{{item.B}}</SPAN> <span class="label label-info">C:{{item.C}}</SPAN> <span class="label label-warning">D:{{item.D}}</SPAN> <span class="label label-danger">E:{{item.E}}</SPAN> <span class="label label-default"> {{item.voteScore}} </SPAN></td>
       </tr>
       {%endfor%}
