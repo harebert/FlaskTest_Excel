@@ -24,6 +24,34 @@
 	/* autoprefixer: ignore next */
 	-webkit-box-orient: vertical;
 }
+* {
+	margin: 0;
+	padding: 0;
+}
+#div1 {
+	width: 90%;
+	height: 200px;
+	margin: 10px auto;
+	position: relative;
+	background: white;
+	overflow: hidden;
+}
+#div1 ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#div1 ul li {
+	margin-right: 10px;
+	float: left;
+	
+	height: 200px;
+	list-style: none;
+}
+	#div1 ul li img{
+	margin-right: 10px;
+
+}
 </style>
 <!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
 
@@ -38,18 +66,75 @@
 <script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
 <script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script>
+	
 <title>上外附中 人工智能学习资源平台 - ISEF INDEX</title>
 </head>
 <script language="javascript">
 	$(document).ready(function(){
-//		$("div").html("<p>p</p>");
+
 		content="{{contents.itemInfo}}"
 		content=content.replace(/\n/g,'<br>')
-		console.log(content)
   		$(".itemInfo").html(content);
-		  
-//		 console.log({{contents.itemInfo}});
-		console.log("ad")
+		
+		
+		//开始轮播代码
+		
+		var speed=2;
+
+var a=document.getElementById('div1');
+
+var b=a.getElementsByTagName('ul')[0];
+
+var c=b.getElementsByTagName('li');
+
+b.innerHTML=b.innerHTML+b.innerHTML;
+
+b.style.width=c[0].offsetWidth*c.length+'px';
+
+function move(){
+
+if (b.offsetLeft<-b.offsetWidth/2) {
+
+b.style.left='0';
+
+}
+
+if (b.offsetLeft>0) {
+
+b.style.left=-b.offsetWidth/2+'px';
+
+}
+
+b.style.left=b.offsetLeft+speed+'px';
+
+}
+
+var timer=setInterval(move,30);
+
+b.onmouseover=function(){
+
+clearInterval(timer);
+
+};
+
+b.onmouseout=function(){
+
+timer=setInterval(move,30);
+
+}; 
+
+document.getElementsByTagName('a')[0].onclick=function(){
+
+speed=-2;
+
+}
+
+document.getElementsByTagName('a')[1].onclick=function(){
+
+speed=2;
+
+}
+
 });
 
 </script>
@@ -71,29 +156,40 @@
         <div class="panel-heading">ISEF-{{contents.itemClass}}-{{contents.itemID}}-{{contents.itemName}}</div>
         <div class="panel-body">
           <div class="row">
-            
-              <div class="col-xs-6 web_item">
-                <p> <img src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemIcon )}}" alt="{{contents.itemName}}" class="img-thumbnail" width="100%"> </p>
-                <p> </p>
+            <div class="col-xs-6 web_item">
+              <p> <img src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemIcon )}}" alt="{{contents.itemName}}" class="img-thumbnail" width="100%"> </p>
+              <p> </p>
+            </div>
+            <div class="col-xs-6 web_item"> {%if contents.itemVideo!=""%}
+              <video width="100%" src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemVideo )}}" controls="controls"> </video>
+              {%endif%} </div>
+          </div>
+			{%if contents.itemImage%}
+          <div class="row">
+            <div class="col-xs-12"> 
+				
+				<a href="javascrip:;">向左</a> <a href="javascrip:;">向右</a>
+              <div id="div1">
+                <ul>
+					{%for image in contents.itemImage%}
+                  <li><a href="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+image )}}" data-lightbox="page" data-title="page"><img src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+image )}}" height="100%" /></a></li>
+                
+					{%endfor%}
+                </ul>
               </div>
-              <div class="col-xs-6 web_item">
-				  {%if contents.itemVideo!=""%}
-				<video width="100%" src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemVideo )}}" controls="controls">
-				  
-				  </video>
-				  {%endif%}
-				</div>
             </div>
-            <div class="row">
-              <div class="itemInfo" id="itemInfo"></div>
-              <div class="button_wrap"> <a class="btn btn-default" href="/ISEFDetail?id={{contents.itemID}}"  role="button" target="_blank"> <span style="word-break:normal;display:-webkit-box;-webkit-line-orient:vertical; -webkit-line-clamp:2;white-space:pre-wrap;" class="itemName" title="{{contents.itemName}}"> {{contents.itemName}} </span></a> </div>
-            </div>
+          </div>
+			{%endif%}
+          <div class="row">
+            <div class="itemInfo" id="itemInfo"></div>
+        
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--
+</div>
+<!--
   <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
@@ -103,7 +199,7 @@
     </div>
     <div class="col-xs-3"> </div>
   </div>
---> 
+-->
 </div>
 </body>
 </html>
