@@ -47,11 +47,11 @@
   <div class="row">
     <div class="col-xs-3">
       <div class="panel panel-default">
-        <div class="panel-heading">Building The Future With Artificial Intelligence</div>
-        <div class="panel-body"> AI enables machines to learn from experience with data & perform cognitive functions associated with the human mind
-          <h3 class="text-center"> <img WIDTH="100%" src="{{ url_for('static', filename="image/AIFuture.png") }}"></h3>
-          <h3 class="text-center"> <img WIDTH="80%" src="{{ url_for('static', filename="image/INTELAI4Y.png") }}"></h3>
-          </div>
+        <div class="panel-heading">International Science and Engineering Fair</div>
+        <div class="panel-body"> The Regeneron International Science and Engineering Fair (ISEF) is an annual science fair in the United States. It is owned and administered by the Society for Science, a non-profit organization based in Washington, D.C. Each May, more than 1500 students from roughly 70 countries and territories compete in the fair for scholarships, tuition grants, internships, scientific field trips and the grand prizes, including one $75,000 and two $50,000 college scholarships. All prizes
+          <h3 class="text-center"> <img WIDTH="100%" src="{{ url_for('static', filename="image/ISEF_LOGO.png") }}"></h3>
+          <!--          <h3 class="text-center"> <img WIDTH="80%" src="{{ url_for('static', filename="image/INTELAI4Y.png") }}"></h3>--> 
+        </div>
       </div>
     </div>
     <div class="col-xs-9">
@@ -63,8 +63,19 @@
               
               {%for item in contents:%}
               <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="ISEF"+"//"+item.itemClass+"//"+item.itemFolder+"//"+item.itemIcon )}}" alt="{{item.itemName}}" class="img-thumbnail" style="height:150px;">
-                <div class="button_wrap"> <a class="btn btn-default" href="/ISEFDetail?id={{item.itemID}}"  role="button" target="_blank"> <span style="word-break:normal;display:-webkit-box;-webkit-line-orient:vertical; -webkit-line-clamp:2;white-space:pre-wrap;" class="itemName" title="{{item.itemName}}"> {{item.itemName}} </span></a> </div>
+                <div class="button_wrap"> <a class="btn btn-default" href="/ISEFDetail?id={{item.itemID}}"  role="button" target="_blank"> 
+				<span
+					  {%if item.itemVideo!=""%}
+					class="glyphicon glyphicon-film" aria-hidden="true"
+					{%endif%}
+					  
+					  style="word-break:normal;display:-webkit-box;-webkit-line-orient:vertical; -webkit-line-clamp:2;white-space:pre-wrap;" class="itemName" title="{{item.itemName}}"> {{item.itemName}} </span></a> </div>
               </div>
+				
+				{%if loop.index0%6==5%}
+					<div class="clearfix"></div>
+				{%endif%}
+				
               {%endfor%}
               
               {% endwith %} </div>
