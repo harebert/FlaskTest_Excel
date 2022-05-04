@@ -662,5 +662,67 @@ def seeRelativeSut():
         # tempDic["status"] = "Failed"
         # tempDic["url"]="ai.sfls.cn"
        # return render_template('uploadSuccess.html' ,contents=tempDic)
+
+@app.route('/ISEFIndex',methods=['POST','GET'])
+def ISEFIndex():
+    import sqlite3
+    basepath = os.path.dirname(__file__)
+    datafilePath = os.path.join(basepath, 'Data/Dataset.db')
+    conn = sqlite3.connect(datafilePath)
+    c = conn.cursor()
+    sql="select * from ISEF"
+    content = c.execute(sql)
+    itemList=[]
+    for row in c:
+        item={}
+        item["id"]=row[0]
+        item["itemID"]=row[1]
+        item["itemName"] = row[2]
+        item["itemIcon"] = row[3]
+        item["itemInfo"] = row[4]
+        item["itemImage"] = row[5]
+        item["itemClass"] = row[6]
+        item["itemFolder"] = row[7]
+        item["itemVideo"] = row[8]
+
+
+        itemList.append(item)
+    print(itemList)
+    return render_template('ISEFIndex.html', contents=itemList)
+
+@app.route('/ISEFDetail',methods=['POST','GET'])
+def ISEFDetail():
+    tempDic={}
+    print(request.values)
+    for i, I in request.values.items():
+        print(i,I)
+        tempDic[i] = I
+    print(tempDic)
+    import sqlite3
+    basepath = os.path.dirname(__file__)
+    datafilePath = os.path.join(basepath, 'Data/Dataset.db')
+    conn = sqlite3.connect(datafilePath)
+    c = conn.cursor()
+    sql = "select * from ISEF where itemID='"+ tempDic["id"] +"'"
+    content = c.execute(sql)
+    itemList = []
+    for row in c:
+        item = {}
+        item["id"] = row[0]
+        item["itemID"] = row[1]
+        item["itemName"] = row[2]
+        item["itemIcon"] = row[3]
+        item["itemInfo"] = row[4]
+
+        item["itemImage"] = row[5].split("|")
+        if len(item["itemImage"])>0:
+            item["itemImage"].pop(0)
+        item["itemClass"] = row[6]
+        item["itemFolder"] = row[7]
+        item["itemVideo"] = row[8]
+
+        itemList.append(item)
+    print(itemList)
+    return render_template('ISEFDetail.html', contents=itemList[0])
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5050,debug=True)
