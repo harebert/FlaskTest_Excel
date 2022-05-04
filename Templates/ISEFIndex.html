@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.web_item {
+	margin: 10px 0 10px 0;
+}
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row {
+	padding: 5px 5px 5px 5px
+}
+.button_wrap {
+	padding: 5px 5px 5px 5px;
+}
+.itemName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/* autoprefixer: ignore next */
+	-webkit-box-orient: vertical;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
+
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script> 
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
+<script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
+<script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script>
+<title>上外附中 人工智能学习资源平台 - ISEF INDEX</title>
+</head>
+
+<body>
+{% include "inc/head.html" %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Building The Future With Artificial Intelligence</div>
+        <div class="panel-body"> AI enables machines to learn from experience with data & perform cognitive functions associated with the human mind
+          <h3 class="text-center"> <img WIDTH="100%" src="{{ url_for('static', filename="image/AIFuture.png") }}"></h3>
+          <h3 class="text-center"> <img WIDTH="80%" src="{{ url_for('static', filename="image/INTELAI4Y.png") }}"></h3>
+          </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">ISEF-站点目录</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="row"> {%with col_s=2 %}
+              
+              {%for item in contents:%}
+              <div class="col-xs-{{ col_s }} text-center web_item"> <img src="{{ url_for('static', filename="ISEF"+"//"+item.itemClass+"//"+item.itemFolder+"//"+item.itemIcon )}}" alt="{{item.itemName}}" class="img-thumbnail" style="height:150px;">
+                <div class="button_wrap"> <a class="btn btn-default" href="/ISEFDetail?id={{item.itemID}}"  role="button" target="_blank"> <span style="word-break:normal;display:-webkit-box;-webkit-line-orient:vertical; -webkit-line-clamp:2;white-space:pre-wrap;" class="itemName" title="{{item.itemName}}"> {{item.itemName}} </span></a> </div>
+              </div>
+              {%endfor%}
+              
+              {% endwith %} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <div class="row info-info">
+        <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
+      </div>
+    </div>
+    <div class="col-xs-3"> </div>
+  </div>
+--> 
+</div>
+</body>
+</html>

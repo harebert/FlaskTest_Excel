@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.web_item {
+	margin: 10px 0 10px 0;
+}
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row {
+	padding: 5px 5px 5px 5px
+}
+.button_wrap {
+	padding: 5px 5px 5px 5px;
+}
+.itemName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/* autoprefixer: ignore next */
+	-webkit-box-orient: vertical;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
+
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script> 
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
+<script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
+<script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script>
+<title>上外附中 人工智能学习资源平台 - ISEF INDEX</title>
+</head>
+<script language="javascript">
+	$(document).ready(function(){
+//		$("div").html("<p>p</p>");
+		content="{{contents.itemInfo}}"
+		content=content.replace(/\n/g,'<br>')
+		console.log(content)
+  		$(".itemInfo").html(content);
+		  
+//		 console.log({{contents.itemInfo}});
+		console.log("ad")
+});
+
+</script>
+<body>
+{% include "inc/head.html" %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">Building The Future With Artificial Intelligence</div>
+        <div class="panel-body"> AI enables machines to learn from experience with data & perform cognitive functions associated with the human mind
+          <h3 class="text-center"> <img WIDTH="100%" src="{{ url_for('static', filename="image/AIFuture.png") }}"></h3>
+          <h3 class="text-center"> <img WIDTH="80%" src="{{ url_for('static', filename="image/INTELAI4Y.png") }}"></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">ISEF-{{contents.itemClass}}-{{contents.itemID}}-{{contents.itemName}}</div>
+        <div class="panel-body">
+          <div class="row">
+            
+              <div class="col-xs-6 web_item">
+                <p> <img src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemIcon )}}" alt="{{contents.itemName}}" class="img-thumbnail" width="100%"> </p>
+                <p> </p>
+              </div>
+              <div class="col-xs-6 web_item">
+				  {%if contents.itemVideo!=""%}
+				<video width="100%" src="{{ url_for('static', filename="ISEF"+"//"+contents.itemClass+"//"+contents.itemFolder+"//"+contents.itemVideo )}}" controls="controls">
+				  
+				  </video>
+				  {%endif%}
+				</div>
+            </div>
+            <div class="row">
+              <div class="itemInfo" id="itemInfo"></div>
+              <div class="button_wrap"> <a class="btn btn-default" href="/ISEFDetail?id={{contents.itemID}}"  role="button" target="_blank"> <span style="word-break:normal;display:-webkit-box;-webkit-line-orient:vertical; -webkit-line-clamp:2;white-space:pre-wrap;" class="itemName" title="{{contents.itemName}}"> {{contents.itemName}} </span></a> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <div class="row info-info">
+        <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
+      </div>
+    </div>
+    <div class="col-xs-3"> </div>
+  </div>
+--> 
+</div>
+</body>
+</html>
