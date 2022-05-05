@@ -715,6 +715,7 @@ def ISEFDetail():
     c = conn.cursor()
     sql = "select * from ISEF where itemID='"+ tempDic["id"] +"'"
     content = c.execute(sql)
+    print(sql)
     itemList = []
     for row in c:
         item = {}
