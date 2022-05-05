@@ -665,12 +665,22 @@ def seeRelativeSut():
 
 @app.route('/ISEFIndex',methods=['POST','GET'])
 def ISEFIndex():
+    tempDic = {}
+    print(request.values)
+    for i, I in request.values.items():
+        print(i, I)
+        tempDic[i] = I
+    print(tempDic)
     import sqlite3
     basepath = os.path.dirname(__file__)
     datafilePath = os.path.join(basepath, 'Data/Dataset.db')
     conn = sqlite3.connect(datafilePath)
     c = conn.cursor()
-    sql="select * from ISEF"
+    if tempDic["class"]!="":
+
+        sql="select * from ISEF where itemClass='"+tempDic["class"]+"'"
+    else:
+        sql = "select * from ISEF"
     content = c.execute(sql)
     itemList=[]
     for row in c:

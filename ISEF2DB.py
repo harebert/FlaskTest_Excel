@@ -1,13 +1,12 @@
 import os
 
-for rootISEF, dirsISEF, filesISEF in os.walk("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFROBO",
-                                             topdown=False):
+for rootISEF, dirsISEF, filesISEF in os.walk("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFSOFT",topdown=False):
     pass
-#     for name in filesISEF:
-#         print(os.path.join(rootISEF, name))
-#     for name in dirsISEF:
-#         print(os.path.join(rootISEF, name))
-# print(dirsISEF)
+    for name in filesISEF:
+        print(os.path.join(rootISEF, name))
+    for name in dirsISEF:
+        print(os.path.join(rootISEF, name))
+print(dirsISEF)
 
 
 import sqlite3
@@ -18,26 +17,27 @@ conn = sqlite3.connect('D:\课程备课\服务器支援网站web\FlaskTest_Excel
 c = conn.cursor()
 
 for i, I in enumerate(dirsISEF):
-    for root, dirs, files in os.walk("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFROBO\\" + I, topdown=False):
+    for root, dirs, files in os.walk("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFSOFT\\" + I, topdown=False):
         itemFolder = I
-        itemID = I.split(" - ")[0]
-        itemName = I.split(" - ")[1]
+        itemID = I.split("-")[0]
+        itemName = I.split("-")[1]
         itemIcon = ""
         itemInfo = ""
         itemImage = ""
-        itemClass = "ISEFROBO"
+        itemClass = "EMMC"
         itemVideo = ""
         for eachFile in files:
             fileName = eachFile.split(".")[0]
             fileExt = eachFile.split(".")[1]
             # 在文件加下，如果文件名等于项目名，则是标题图片，否则是项目图片
             if fileExt == "jpg" or fileExt == "png":
-                if fileName == itemID:
+                #print(fileName,I)
+                if fileName == I:# itemID:
                     itemIcon = eachFile
                 else:
                     itemImage += "|" + eachFile
             elif fileExt == "txt":
-                f = open("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFROBO\\" + I + "\\" + eachFile, "r")
+                f = open("D:\课程备课\服务器支援网站web\FlaskTest_Excel卷积\static\ISEF\ISEFSOFT\\" + I + "\\" + eachFile, "r")
                 itemLineInfo = f.readlines()
             elif fileExt == "mp4":
                 itemVideo = eachFile
