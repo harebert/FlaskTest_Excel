@@ -3540,7 +3540,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid transparent
 }
 @media (min-width:768px) {
@@ -3703,7 +3703,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
     padding: 5px 15px 5px 25px
   }
   .navbar-nav .open .dropdown-menu > li > a {
-    line-height: 10px
+    line-height: 20px
   }
   .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-nav .open .dropdown-menu > li > a:hover {
     background-image: none
