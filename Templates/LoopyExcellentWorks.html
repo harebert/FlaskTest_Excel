@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+.web_item {
+	margin: 10px 0 10px 0;
+}
+.info-info {
+	border: thin solid #336699;
+	border-radius: 5px 5px 5px 5px;
+}
+.row {
+	padding: 5px 5px 5px 5px
+}
+.button_wrap {
+	padding: 5px 5px 5px 5px;
+}
+.itemName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/* autoprefixer: ignore next */
+	-webkit-box-orient: vertical;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+#div1 {
+	width: 90%;
+	height: 200px;
+	margin: 10px auto;
+	position: relative;
+	background: white;
+	overflow: hidden;
+}
+#div1 ul {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#div1 ul li {
+	margin-right: 10px;
+	float: left;
+	height: 200px;
+	list-style: none;
+}
+#div1 ul li img {
+	margin-right: 10px;
+}
+</style>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 --> 
+
+<script src="{{ url_for('static', filename="inc/jquery.min.js") }}"></script> 
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap.min.css") }}" >
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/bootstrap-theme.min.css") }}">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
+<script src="{{ url_for('static', filename="inc/bootstrap.min.js") }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename="inc/lightbox.css") }}">
+<script src="{{ url_for('static', filename="inc/lightbox.js") }}"></script>
+<title>上外附中 人工智能学习资源平台 - LOOPY 优秀作品展示</title>
+</head>
+<script language="javascript">
+	$(document).ready(function(){
+
+		content="{{contents.intro}}"
+		content=content.replace(/\n/g,'<br>')
+  		$(".itemInfo").html(content);
+		contentSummary=content.split("<br>")
+		$(".intro").html(contentSummary[0]);
+		
+		//开始轮播代码
+		
+		var speed=2;
+
+var a=document.getElementById('div1');
+
+var b=a.getElementsByTagName('ul')[0];
+
+var c=b.getElementsByTagName('li');
+
+b.innerHTML=b.innerHTML+b.innerHTML;
+
+b.style.width=c[0].offsetWidth*c.length+'px';
+
+function move(){
+
+if (b.offsetLeft<-b.offsetWidth/2) {
+
+b.style.left='0';
+
+}
+
+if (b.offsetLeft>0) {
+
+b.style.left=-b.offsetWidth/2+'px';
+
+}
+
+b.style.left=b.offsetLeft+speed+'px';
+
+}
+
+var timer=setInterval(move,30);
+
+b.onmouseover=function(){
+
+clearInterval(timer);
+
+};
+
+b.onmouseout=function(){
+
+timer=setInterval(move,30);
+
+}; 
+
+document.getElementsByTagName('a')[0].onclick=function(){
+
+speed=-2;
+
+}
+
+document.getElementsByTagName('a')[1].onclick=function(){
+
+speed=2;
+
+}
+
+});
+
+</script>
+<body>
+{% include "inc/head.html" %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">作品简介：</div>
+		  
+		  <div class="panel-body"> 
+			  <p></p>
+			  <p>
+			  {%if contents.AuthorImage!=0%}
+			  	{%for i in range(1,contents.AuthorImage+1)%}
+			  	<img src="{{ url_for('static', filename="LinearRegression"+"//"+contents.id|string+"/Author"+i|string+".PNG")}}" alt="{{contents.itemName}}" class="img-circle" width="30%">
+			  {%endfor%}
+			  {%endif%}</p>
+			  <span class="intro"></span>
+          <h3 class="text-center"> <img WIDTH="100%" src="{{ url_for('static', filename="image/LOOPYEXCELL.png") }}"></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-9">
+      <div class="panel panel-default"> 
+        <!--panel 名称-->
+        <div class="panel-heading">LOOPY优秀作品 - {{contents.class_}} - {{contents.stus_}} - {{contents.itemName}}</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-6 web_item"> 
+              <!--项目标题图-->
+              <p> <img src="{{ url_for('static', filename="LinearRegression"+"//"+contents.id|string+"/幻灯片1.PNG")}}" alt="{{contents.itemName}}" class="img-thumbnail" width="100%"> </p>
+              <p> </p>
+            </div>
+            <!--项目视频-->
+            <div class="col-xs-6 web_item"> {%if contents.videoUrl!=""%}
+              <video width="100%" src="{{ url_for('static', filename="LinearRegression"+"//"+contents.id|string+"//"+contents.videoUrl )}}" controls="controls"> </video>
+              {%endif%} </div>
+          </div>
+          <!--项目图片--> 
+          {%if contents.ImageList!=0%}
+          <div class="row">
+            <div class="col-xs-12"> 
+              
+              <!--				<a href="javascrip:;">向左</a> <a href="javascrip:;">向右</a>-->
+              <div id="div1">
+                <ul>
+                  {%for i in range(1,contents.ImageList)%}
+                  <li><a href="{{ url_for('static', filename="LinearRegression"+"//"+contents.id|string+"/幻灯片"+i|string +".PNG" )}}" data-lightbox="page" data-title="page"><img src="{{ url_for('static', filename="LinearRegression"+"//"+contents.id|string+"/幻灯片"+i|string +".PNG" )}}" height="100%" /></a></li>
+                  {%endfor%}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+			<div class="row"> 
+				<iframe class="frame" frameborder="0" scrolling="no" src="{{contents.Urls_}}" width="100%" height="800px"></iframe>
+			</div>
+          <div class="row"> 
+            <!--项目介绍-->
+            <div class="itemInfo" id="itemInfo"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+      <div class="row info-info">
+        <div class="col-xs-12 text-center"><a href="{{ url_for('static', filename="image/paintsmall2.xlsx")}}" download="paintsmall2.xlsx"><img width="100%" src="{{ url_for('static', filename="image/paintsmall2.jpg") }}"></div>
+      </div>
+    </div>
+    <div class="col-xs-3"> </div>
+  </div>
+-->
+</div>
+</body>
+</html>

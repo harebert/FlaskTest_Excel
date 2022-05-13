@@ -735,5 +735,51 @@ def ISEFDetail():
         itemList.append(item)
     print(itemList)
     return render_template('ISEFDetail.html', contents=itemList[0])
+
+@app.route('/LoopyExcellentWorks',methods=['POST','GET'])   #正负相关性优秀学生作品查看
+def LoopyExcellentWorks():
+    tempDic={}
+    print(request.values)
+    for i, I in request.values.items():
+        print(i,I)
+        tempDic[i] = I
+    print(tempDic)
+    import sqlite3
+    basepath = os.path.dirname(__file__)
+    datafilePath = os.path.join(basepath, 'Data/Dataset.db')
+    conn = sqlite3.connect(datafilePath)
+    c = conn.cursor()
+    sql = "select * from relativeData where id="+ tempDic["id"]
+    print(sql)
+    content = c.execute(sql)
+
+    itemList = []
+    for row in c:
+        item = {}
+        item["id"] = row[0]
+        item["class_"] = row[1]
+        item["stus_"] = row[2]
+        item["Urls_"] = row[3]
+        item["date_"] = row[4]
+        item["time_"] = row[5]
+        item["score"] = row[6]
+        item["A"] = row[7]
+        item["B"] = row[8]
+        item["C"] = row[9]
+        item["D"] = row[10]
+        item["E"] = row[11]
+
+        item["ImageList"] = row[12]     #返回的是数字，图片命名需为幻灯片1,2,3
+
+        item["videoUrl"] = row[13]
+        item["AuthorImage"] =row[14]    #返回的是数字 按照序号安排图片
+
+        item["intro"] = row[16]
+        item["itemName"] = row[17]
+        itemList.append(item)
+    print(itemList)
+    return render_template('LoopyExcellentWorks.html', contents=itemList[0])
+
+
 if __name__=="__main__":
     app.run(host="0.0.0.0", port=5050,debug=True)
